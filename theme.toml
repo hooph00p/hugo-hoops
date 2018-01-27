@@ -3,19 +3,14 @@
 
 name = "Hugo Hoops"
 license = "MIT"
-licenselink = "https://github.com/yourname/yourtheme/blob/master/LICENSE.md"
-description = ""
-homepage = "http://example.com/"
-tags = []
-features = []
+licenselink = "https://github.com/hooph00p/hugo-hoops/blob/master/LICENSE.md"
+description = "A simple theme using Bulma"
+homepage = "http://hooph00p.io/"
+tags = ["hoop","hoops","hooph00p","bulma"]
+features = ["bulma","blog"]
 min_version = "0.32.2"
 
 [author]
-  name = ""
-  homepage = ""
+  name = "Jared Hooper"
+  homepage = "https://hooph00p.io"
 
-# If porting an existing theme
-[original]
-  name = ""
-  homepage = ""
-  repo = ""
