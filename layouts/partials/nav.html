@@ -1,0 +1,65 @@
+<nav class="navbar small-caps navbar-bottom">
+    <div class="navbar-brand">
+        <a class="navbar-item"
+           href="{{ .Site.BaseURL }}">
+            {{ .Site.Title }}
+        </a>
+        <div class="navbar-burger burger"
+             data-target="navbarExampleTransparentExample">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <div class="navbar-divider"></div>
+
+    <div id="navbarExampleTransparentExample"
+         class="navbar-start">
+
+        <a class="navbar-item"
+           href="{{ .Site.BaseURL }}">
+            home
+        </a>
+
+        <a class="navbar-item"
+           href="{{ .Site.BaseURL }}/about">
+            about
+        </a>
+
+        <a class="navbar-item"
+           href="{{ .Site.BaseURL }}/contact">
+            contact
+        </a>
+
+        <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">
+                most recent posts
+            </a>
+            <div class="navbar-dropdown">
+                {{ range first 10 .Site.Pages }} {{ if eq .Type "post" }} {{ .Render "nav"}} {{ end }} {{ end }}
+            </div>
+        </div>
+        <!-- <a class="navbar-item" href="{{ .Site.BaseURL }}">
+            Home
+        </a> -->
+    </div>
+
+    <div class="navbar-end">
+        {{ if .Title }}
+        <div class="navbar-item">{{.Title}}</div>
+        {{ end }}
+        <!-- {{ $url := replace .Permalink ( printf "%s" .Site.BaseURL) "" }} {{ $.Scratch.Add "path" .Site.BaseURL }}
+        <nav class="breadcrumb"
+             aria-label="breadcrumbs">
+            <ul>
+                {{ range $index, $element := split $url "/" }} {{ $.Scratch.Add "path" $element }} {{ if ne $element "" }}
+                <li>
+                    <a>{{ . }}</a>
+                </li>
+                {{ $.Scratch.Add "path" "/" }} {{ end }} {{ end }}
+            </ul>
+        </nav> -->
+    </div>
+
+</nav>

@@ -1,0 +1,47 @@
+ {{ partial "head.html" . }}
+
+<body>
+  {{ partial "navbar.html" . }}
+
+  <section class="section">
+    <div class="columns">
+      <div class="column is-3">
+        {{ partial "sidebar.html" . }}
+      </div>
+      <div class="column">
+        <div class="level">
+          <div class="level-left">
+            <h1 class="title">{{ .Title }}</h1>
+          </div>
+          <div class="level-right">
+              {{ .Date.Format "Jan 2, 2006" }}
+          </div>
+        </div>
+      <hr/>
+      {{ if and (isset .Params "featuredpath") (ne .Params.featuredpath "") }}
+          {{ $.Scratch.Set "path" .Params.featuredpath }}
+
+          {{ if and (isset .Params "featured") (ne .Params.featuredpath "") }}
+              {{ $.Scratch.Set "structType" "page" }}
+              {{ partial "img-path" . }}
+              {{ $path := $.Scratch.Get "path" }}
+              {{ $alt := $.Scratch.Get "alt" }}
+              {{ $img := $.Scratch.Get "img" }}
+
+              <figure class="image is-2by1">
+                  <img src="{{ $path | relURL }}/{{ .Params.featured }}" alt="{{ $alt }}">
+              </figure>
+          {{ end }}
+      {{ end }}
+
+        <hr/>
+        <div class="content post-content">
+          {{ .Content }} {{ template "_internal/disqus.html" . }}
+        </div>
+      </div>
+    </div>
+  </section>
+  {{ partial "footer.html" . }} {{ partial "script.html" . }}
+</body>
+
+</html>

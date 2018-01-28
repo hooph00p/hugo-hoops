@@ -1,0 +1,93 @@
+<!-- is-info: #209cee -->
+
+<div class="sidebar">
+    <figure>
+        <svg viewBox="0 0 100 85"
+             version="1.1"
+             xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <pattern id="img"
+                         patternUnits="userSpaceOnUse"
+                         width="100"
+                         height="100">
+                    <image xlink:href="{{ $.Site.Params.img }}"
+                           x="-25"
+                           width="150"
+                           height="100" />
+                </pattern>
+            </defs>
+            <g transform="scale(0.75,0.75) translate(15,5)">
+                <circle cx="50"
+                        cy="50"
+                        r="50"
+                        fill="url(#img)" />
+                <circle cx="50"
+                        cy="50"
+                        r="50"
+                        fill="white"
+                        fill-opacity="0.1"
+                        stroke="black"
+                        stroke-opacity="0.25" />
+                <text x="50"
+                      y="100"
+                      text-anchor="middle"
+                      font-size="16"
+                      fill="black"
+                      fill-opacity="0.25"
+                      stroke-width="0.5"
+                      style="font-variant:small-caps"
+                      stroke="white"
+                      stroke-opacity="1">{{ .Site.Params.author }}</text>
+                <line x1="20"
+                      y1="102"
+                      x2="80"
+                      y2="102"
+                      stroke-width="1"
+                      stroke-opacity="0.25"
+                      stroke="black" />
+            </g>
+        </svg>
+    </figure>
+
+    <div class="social">
+        <div class="buttons is-centered">
+            <a class="button is-info">
+                <span class="icon">
+                    <i class="fa fa-linkedin"></i>
+                </span>
+            </a>
+            <a class="button">
+                <span class="icon">
+                    <i class="fa fa-github"></i>
+                </span>
+            </a>
+            <a class="button is-info">
+                <span class="icon">
+                    <i class="fa fa-twitter"></i>
+                </span>
+            </a>
+        </div>
+    </div>
+
+
+    {{ if .Site.Params.tagline }}
+
+    <hr class="pretty" />
+
+    <div class="notification text-center is-white">
+        {{ .Site.Params.tagline }}
+    </div>
+
+    {{ end }}
+
+
+    {{ if .Site.Params.showRecents }}
+    <hr class="pretty" />
+    <div class="recents">
+        <h4 class="title is-info">Recent Posts</h4>
+        {{ range .Site.Pages }} {{ if eq .Type "post" }} {{ .Render "sidebar"}} {{ end }} {{ end }}
+    </div>
+    {{ end }}
+    <hr class="pretty" />
+
+</div>
