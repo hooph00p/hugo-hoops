@@ -1,0 +1,109 @@
+
+$accent : #000
+$accent-invert: #fff;
+$primary: $accent;
+$primary-invert: $accent-invert;
+
+@import '../../node_modules/bulma/bulma';
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:800);
+
+
+
+html
+    background-color: #fefefe
+
+body *
+    font: "Helvetica Neue", Helvetica, Arial, sans-serif
+    // font: 1rem/1 Open Sans, Impact;
+
+/** is-info: #209cee */
+
+.hoop-has-white-text,
+.hoop-has-white-text *
+    color: white !important;
+
+
+.hoop-small-caps,
+.hoop-small-caps *
+    font-variant: small-caps;
+
+
+.hoop-to-upper,
+.hoop-to-upper *
+    text-transform: uppercase;
+
+
+.hoop-navbar-divider
+    border: 1px $accent solid;
+    min-height: 3rem;
+    margin: .8rem;
+
+
+.hoop-navbar-bottom
+    border-bottom: 2px solid $accent;
+
+
+.hoop-sidebar
+    height: 100%;
+    padding: 10px;
+    border-right: 2px solid $accent;
+
+
+.hoop-text-justify
+    text-align: justify;
+
+
+.hoop-text-center
+    text-align: center;
+
+.hoop-small *
+    font-size: .8rem;
+
+
+/** Posts custom CSS */
+
+.hoop-post-content
+    h1,
+    h2,
+    h3,
+    h4
+        /* font-variant: small-caps; */
+        color: $accent;
+        font-weight: 500;
+
+.has-primary-stroke
+    border: 1px solid green;
+
+
+/** Because we're using highlight js */
+
+.hoop-post-content
+    pre
+        padding: 0 !important;
+        margin: 1em 0 1em 0 !important;
+
+
+
+
+/** about custom css */
+
+.hoop-about-content
+    h1,
+    h2,
+    h3,
+    h4
+        text-transform: uppercase;
+        font-variant: small-caps !important;
+        color: $accent;
+        font-weight: 500;
+
+.hoop-has-text-grey *
+    color: #333
+
+.hoop-fade *
+    opacity: 0.1
+
+.hoop-profile
+  filter: gray; // IE6-9
+  -webkit-filter: grayscale(1); // Google Chrome, Safari 6+ & Opera 15+
+  filter: grayscale(1); // Microsoft Edge and Firefox 35+

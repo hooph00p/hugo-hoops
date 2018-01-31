@@ -1,8 +1,13 @@
-<nav class="navbar small-caps navbar-bottom">
+<nav class="navbar is-fixed-top hoop-small-caps hoop-navbar-bottom"
+     role="navigation"
+     aria-label="main navigation">
     <div class="navbar-brand">
         <a class="navbar-item"
            href="{{ .Site.BaseURL }}">
-            {{ .Site.Title }}
+            <img src="{{.Site.BaseURL}}{{.Site.Params.logo}}"
+                 alt="Bulma: a modern CSS framework based on Flexbox"
+                 width="175"
+                 height="28">
         </a>
         <div class="navbar-burger burger"
              data-target="navbarExampleTransparentExample">
@@ -12,54 +17,49 @@
         </div>
     </div>
 
-    <div class="navbar-divider"></div>
+    <div class="navbar-menu"
+         id="navMenu">
+        <div class="navbar-start">
 
-    <div id="navbarExampleTransparentExample"
-         class="navbar-start">
-
-        <a class="navbar-item"
-           href="{{ .Site.BaseURL }}">
-            home
-        </a>
-
-        <a class="navbar-item"
-           href="{{ .Site.BaseURL }}/about">
-            about
-        </a>
-
-        <a class="navbar-item"
-           href="{{ .Site.BaseURL }}/contact">
-            contact
-        </a>
-
-        <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link">
-                most recent posts
+            <a class="navbar-item"
+               href="{{ .Site.BaseURL }}">
+                <span class="icon is-small has-text-primary hoop-fade">
+                    <i class="fa fa-home fa-3x"></i>
+                </span>
+                home
             </a>
-            <div class="navbar-dropdown">
-                {{ range first 10 .Site.Pages }} {{ if eq .Type "post" }} {{ .Render "nav"}} {{ end }} {{ end }}
+
+            <a class="navbar-item"
+               href="{{ .Site.BaseURL }}/about">
+                <span class="icon is-small has-text-primary hoop-fade">
+                    <i class="fa fa-user-circle-o fa-2x"></i>
+                </span>
+                about
+            </a>
+
+            <a class="navbar-item"
+               href="{{ .Site.BaseURL }}/contact">
+                <span class="icon is-small has-text-primary hoop-fade">
+                    <i class="fa fa-envelope-o fa-2x"></i>
+                </span>
+                contact
+            </a>
+
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link">
+                    <span class="icon is-small has-text-primary hoop-fade">
+                        <i class="fa fa-clock-o fa-2x"></i>
+                    </span>
+                    recent posts
+                </a>
+                <div class="navbar-dropdown">
+                    {{ range first 10 .Site.Pages }} {{ if eq .Type "post" }} {{ .Render "nav"}} {{ end }} {{ end }}
+                </div>
             </div>
-        </div>
-        <!-- <a class="navbar-item" href="{{ .Site.BaseURL }}">
+            <!-- <a class="navbar-item" href="{{ .Site.BaseURL }}">
             Home
         </a> -->
     </div>
-
-    <div class="navbar-end">
-        {{ if .Title }}
-        <div class="navbar-item">{{.Title}}</div>
-        {{ end }}
-        <!-- {{ $url := replace .Permalink ( printf "%s" .Site.BaseURL) "" }} {{ $.Scratch.Add "path" .Site.BaseURL }}
-        <nav class="breadcrumb"
-             aria-label="breadcrumbs">
-            <ul>
-                {{ range $index, $element := split $url "/" }} {{ $.Scratch.Add "path" $element }} {{ if ne $element "" }}
-                <li>
-                    <a>{{ . }}</a>
-                </li>
-                {{ $.Scratch.Add "path" "/" }} {{ end }} {{ end }}
-            </ul>
-        </nav> -->
     </div>
 
 </nav>

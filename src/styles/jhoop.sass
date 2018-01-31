@@ -1,0 +1,368 @@
+$jh : jh
+
+$primary: #333
+$secondary: #0a9
+$success: #0a9
+$danger: orange
+
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:800);
+
+$font-size: ( xs: .5em, sm: .8em, nrm: 1em, md: 1.5em, lg: 2em, xl: 4em )
+$unit-size: ( xs: .5em,  sm: 1em,  nrm: 2em,  md: 3em,  lg: 4em,  xl: 8em )
+$sizes: xs sm md nrm lg xl
+$sides: left right top bottom
+$colours: ( primary:$primary, info:$info, secondary:$secondary, danger:$danger, success:$success, warning:$warning )
+$browsers: firefox internet-explorer chrome safari edge
+
+$middle-blend: linear-gradient(90deg, $secondary 10%, $primary 80%)
+
+
+html
+  background-color: $primary
+
+.#{$jh}-like-bold
+  background-image: linear-gradient(131deg, $secondary 0, $primary 80%)
+
+.#{$jh}-is-half
+  background-image: $middle-blend
+
+.#{$jh}-is-first
+  background-image: linear-gradient(91deg, $secondary 0%,  $primary 100%)
+
+.#{$jh}-is-second
+  background-image: linear-gradient(131deg, $secondary  15%, $secondary 100%)
+
+=adjust($type, $size, $side)
+  @if $type == pad
+    @if $side == left
+      padding-left: $size !important
+    @else if $side == right
+      padding-right: $size !important
+    @else if $side == top
+      padding-top: $size !important
+    @else if $side == bottom
+      padding-bottom: $size !important
+    @else
+      padding: $size !important
+  @else if $type == margin
+    @if $side == left
+      margin-left: $size !important
+    @else if $side == right
+      margin-right: $size !important
+    @else if $side == top
+      margin-top: $size !important
+    @else if $side == bottom
+      margin-bottom: $size !important
+    @else
+      margin: $size !important
+
+/* My padding mixin
+=pad($size, $side)
+  +adjust(pad,$size,$side)
+
+/* Margin mixing
+=margin($size, $side)
+  +adjust(margin,$size,$side)
+
+/* class padding for each side, each size
+@each $size in $sizes
+  $my-size: map-get($unit-size, $size)
+  .#{$jh}-pad-#{$size}
+    +pad($my-size, all)
+  @each $side in $sides
+    .#{$jh}-pad-#{$side}-#{$size}
+      +pad($my-size, $side)
+    .#{$jh}-margin-#{$side}-#{$size}
+      +margin($my-size, $side)
+
+@each $colour in map-keys($colours)
+  $shade: map-get($colours, $colour)
+  .#{$jh}-has-#{$colour}
+    color: $shade !important
+    *
+      color: $shade !important
+
+=text-xs
+  font-size: 80%
+
+=text-lg
+  font-size: 120%
+
+.#{$jh}-text-xs
+  +text-xs
+
+.#{$jh}-text-right
+  text-align: right !important
+.#{$jh}-text-left
+  text-align: left !important
+.#{$jh}-text-center
+  text-align: center !important
+.#{$jh}-text-justify
+  text-align: justify !important
+
+.#{$jh}-is-circle
+  border-radius: 50%
+
+.#{$jh}-is-splash
+  // replace this when you want to use a splash image
+  // background-image: url('/images/pattern.jpg') !important
+  background-color: #333
+  background-repeat: no-repeat !important
+  background-position: center fixed !important
+  background-size: cover !important
+  position: fixed
+  top: 0
+  left: 0
+  z-index: -1
+  width: 100%
+  height: 100%
+
+=is-transparent
+  background: transparent !important
+
+.#{$jh}-is-transparent
+  +is-transparent
+
+.#{$jh}-is-secondary
+  background-color: $secondary
+
+.#{$jh}-is-bio
+  +text-lg
+
+.#{$jh}-has-black
+  color: black !important
+  *
+    color: black !important
+
+.#{$jh}-has-white
+  color: white
+  *
+    color: white
+  h1, h2, h3, h4, h5, h6, a:visited
+    color: white
+
+.#{$jh}-has-colored-links
+  a
+    color: $secondary !important
+    &:hover
+      text-decoration: underline
+
+.#{$jh}-has-white-outline
+  border: 1px solid white
+
+.#{$jh}-is-rounded
+  border-radius: 5px
+
+.#{$jh}-sidebar
+  position: fixed
+  left: 0
+  height: 100%
+  line-height: 200%
+
+.#{$jh}-section-nav
+  transition: all linear .2s
+
+.#{$jh}-active
+  color:$secondary !important
+  font-weight: bold
+  +pad(5px, left)
+
+.#{$jh}-table
+  +is-transparent
+  tr:hover
+    background: rgba(0,0,0,.1)
+
+.icon.left-fix
+  margin-left: 0px !important
+
+.#{$jh}-has-white-outline
+  background: transparent
+  border: 1px solid white
+
+
+.#{$jh}-gist, .#{$jh}-publication, .#{$jh}-recommendation
+  transition: .15s linear all
+  *
+    transition: .15s linear all
+  &:hover
+    border: 1px solid transparent
+    background: white
+    *
+      color: black
+
+.#{$jh}-student
+  cursor:help !important
+
+
+.#{$jh}-circle
+  border-radius: 100%
+  height: 180px
+  width: 180px
+
+
+@each $browser in $browsers
+  .#{$jh}-#{$browser}
+    border: 5px solid transparent
+    width: 45px
+    height: 45px
+    +margin(5px, right)
+    +pad(5px, right)
+    stroke: #eee
+    stroke-width: 10
+    stroke-miterlimit: 2
+
+.#{$jh}-safari
+  stroke-dashoffset: 2400
+  stroke-dasharray: 2400
+
+.#{$jh}-saf0
+  fill:#BBBBBC
+.#{$jh}-saf1
+  fill:#DBDBDA
+.#{$jh}-saf2
+  fill:#0279B3
+.#{$jh}-saf3
+  fill:#F2F2F3
+.#{$jh}-saf4
+  fill:#EE383D
+
+.#{$jh}-internet-explorer
+  stroke-width: 20
+  stroke-dashoffset: 13000
+  stroke-dasharray: 13000
+  path
+    fill: $info
+
+// .#{$jh}-firefox
+//   stroke-dashoffset: 4500
+//   stroke-dasharray: 4500
+//   :nth-child(1)
+//     fill: $info
+//   :nth-child(2)
+//     fill: $danger
+
+// .#{$jh}-chrome
+//   stroke-dashoffset: 2000
+//   stroke-dasharray: 2000
+//   :nth-child(1)
+//     fill: yellow
+//   :nth-child(2)
+//     fill: red
+//   :nth-child(3)
+//     fill: green
+//   circle
+//     fill: $info
+
+.#{$jh}-edge
+  stroke-width: 1
+  stroke-dashoffset: 500
+  stroke-dasharray: 500
+  path
+    fill: $info
+
+@keyframes DrawLine
+  to
+    stroke-dashoffset: 0
+
+@keyframes FadeStroke
+  to
+    stroke-opacity: 0
+
+@keyframes FillIn
+  from
+    fill-opacity: 0
+  to
+    fill-opacity: 1
+
+
+@keyframes borderIn
+  from
+    border-bottom-color: transparent
+  to
+    border-bottom-color: black
+
+.#{$jh}-active-browser svg,
+.#{$jh}-active-browser-animate svg
+  border-bottom: 5px solid black
+
+.#{$jh}-active-browser-animate svg
+  animation: borderIn ease-in
+  animation-duration: 10s
+
+.#{$jh}-svg-animate *
+  fill-opacity: 0
+  animation-timing-function: ease-in-out
+  animation-fill-mode: forwards
+  animation-iteration: 1
+  animation-name: DrawLine, FadeStroke, FillIn
+  animation-duration: 6s, 1.5s, 1s
+  animation-delay: 0s, 4s, 4s
+
+
+.#{$jh}-name
+  font: 1.2em/1 Open Sans, Impact
+  text-transform: uppercase
+
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:800)
+
+.#{$jh}-text--transparent
+  fill: transparent
+
+
+.#{$jh}-anim-shape
+  -webkit-transform-origin: 0x 150px
+  -ms-transform-origin: 0x 150px
+  transform-origin: 0x 150px
+  -webkit-transform: scale(0, 1) translate(0, 0)
+  -ms-transform: scale(0, 1) translate(0, 0)
+  transform: scale(0, 1) translate(0, 0)
+  -webkit-animation: moving-panel 6s linear forwards
+  animation: moving-panel 6s linear forwards
+
+
+.#{$jh}-colortext .#{$jh}-anim-shape:nth-child(1)
+  fill: $info
+
+
+.#{$jh}-colortext .#{$jh}-anim-shape:nth-child(2)
+  fill: $danger
+
+
+.#{$jh}-colortext .#{$jh}-anim-shape:nth-child(3)
+  fill: $success
+
+
+.#{$jh}-colortext .#{$jh}-anim-shape:nth-child(4)
+  fill: $warning
+
+
+.#{$jh}-colortext .#{$jh}-anim-shape:nth-child(5)
+  fill: white
+
+
+.#{$jh}-shadow
+  -webkit-transform: translate(0px, 2px)
+  -ms-transform: translate(0px, 2px)
+  transform: translate(0px, 2px)
+
+
+.#{$jh}-anim-shape--shadow
+  fill: #000
+  fill-opacity: .2
+
+
+@-webkit-keyframes moving-panel
+  100%
+    -webkit-transform: scale(1, 1) translate(20px, 0)
+    transform: scale(1, 1) translate(20px, 0)
+
+
+
+@keyframes moving-panel
+  100%
+    -webkit-transform: scale(1, 1) translate(10px, 0)
+    transform: scale(1, 1) translate(10px, 0)
+
+.#{$jh}-is-visible-super-large
+  @media screen and (max-width: 1500px)
+    display: none !important

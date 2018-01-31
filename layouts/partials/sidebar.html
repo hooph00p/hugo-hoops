@@ -1,7 +1,34 @@
-<!-- is-info: #209cee -->
+<!-- is-primary: #209cee -->
 
-<div class="sidebar">
-    <figure>
+<div class="hoop-sidebar">
+    <section class="section">
+    <div class="card is-hidden-desktop">
+        <div class="card-content">
+            <div class="media">
+                <div class="media-left">
+                    <figure class="image is-48x48">
+                        <img src="{{.Site.Params.img}}"
+                             alt="Placeholder image">
+                    </figure>
+                </div>
+                <div class="media-content">
+                    <p class="title is-4">{{.Site.Params.owner}}</p>
+                    <p class="subtitle is-6"><a href="https://twitter.com/{{.Site.Params.twitter}}">@{{.Site.Params.twitter}}</a></p>
+                </div>
+            </div>
+
+            <div class="content">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
+                <a>@bulmaio</a>.
+                <a href="#">#css</a>
+                <a href="#">#responsive</a>
+                <br>
+                <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+            </div>
+        </div>
+    </div>
+    <hr class="is-hidden-desktop" />
+    <figure class="is-hidden-mobile">
         <svg viewBox="0 0 100 85"
              version="1.1"
              xmlns="http://www.w3.org/2000/svg">
@@ -26,42 +53,49 @@
                         r="50"
                         fill="white"
                         fill-opacity="0.1"
-                        stroke="black"
-                        stroke-opacity="0.25" />
+                        stroke="{{.Site.Params.primary}}"
+                        stroke-opacity="1" />
                 <text x="50"
                       y="100"
                       text-anchor="middle"
-                      font-size="16"
-                      fill="black"
-                      fill-opacity="0.25"
-                      stroke-width="0.5"
-                      style="font-variant:small-caps"
+                      font-size="18"
+                      fill="{{.Site.Params.primary}}"
+                      fill-opacity="1"
+                      stroke-width=".9"
+                      style="
+                        font-variant:small-caps;
+                        letter-spacing: -1px;
+                        font-weight:700;
+                     "
                       stroke="white"
-                      stroke-opacity="1">{{ .Site.Params.author }}</text>
+                      stroke-opacity="1">{{ .Site.Params.owner }}</text>
                 <line x1="20"
-                      y1="102"
+                      y1="103"
                       x2="80"
-                      y2="102"
-                      stroke-width="1"
-                      stroke-opacity="0.25"
-                      stroke="black" />
+                      y2="103"
+                      stroke-width="0.5"
+                      stroke-opacity="0.8"
+                      stroke="{{.Site.Params.primary}}" />
             </g>
         </svg>
     </figure>
 
-    <div class="social">
+    <div class="hoop-social">
         <div class="buttons is-centered">
-            <a class="button is-info">
+            <a class="button is-primary">
+                <span>LinkedIn</span>
                 <span class="icon">
                     <i class="fa fa-linkedin"></i>
                 </span>
             </a>
             <a class="button">
+                <span>Github</span>
                 <span class="icon">
                     <i class="fa fa-github"></i>
                 </span>
             </a>
-            <a class="button is-info">
+            <a class="button is-primary">
+                <span>Twitter</span>
                 <span class="icon">
                     <i class="fa fa-twitter"></i>
                 </span>
@@ -72,22 +106,19 @@
 
     {{ if .Site.Params.tagline }}
 
-    <hr class="pretty" />
+    <hr class="hoop-pretty" />
 
-    <div class="notification text-center is-white">
-        {{ .Site.Params.tagline }}
+    <div class="notification hoop-text-center hoop-small-caps is-primary">
+        {{ $.Site.Params.tagline }}
     </div>
 
-    {{ end }}
-
-
-    {{ if .Site.Params.showRecents }}
-    <hr class="pretty" />
-    <div class="recents">
-        <h4 class="title is-info">Recent Posts</h4>
-        {{ range .Site.Pages }} {{ if eq .Type "post" }} {{ .Render "sidebar"}} {{ end }} {{ end }}
+    {{ end }} {{ if .Site.Params.showRecents }}
+    <hr class="hoop-pretty" />
+    <div class="hoop-recents">
+        <h4 class="title is-primary">Recent Posts</h4>
+        {{ range first 10 .Site.Pages }} {{ if eq .Type "post" }} {{ partial "post.sidebar"}} {{ end }} {{ end }}
     </div>
     {{ end }}
     <hr class="pretty" />
-
+</section>
 </div>

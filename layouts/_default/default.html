@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+
+{{ partial "head" . }}
+
+<body>
+    {{ partial "nav" . }}
+
+    <section class="section">
+        <div class="columns">
+            <div class="column is-3">
+                {{ partial "sidebar" . }}
+            </div>
+            <div class="column">
+                {{ .Render "content" }}
+            </div>
+        </div>
+    </section>
+    {{ partial "footer.html" . }} {{ partial "script.html" . }}
+</body>
+
+</html>
